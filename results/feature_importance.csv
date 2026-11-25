@@ -1,0 +1,43 @@
+feature,importance,kind,model
+log2_work_per_worker,3.683009104595771,|standardized coefficient| (log-time),linear_regression
+algorithm_timsort,1.9757598308507123,|standardized coefficient| (log-time),linear_regression
+log2_input_size,1.8730832031813616,|standardized coefficient| (log-time),linear_regression
+log2_workers,1.381239146080396,|standardized coefficient| (log-time),linear_regression
+algorithm_quick_sort,0.9511135570043159,|standardized coefficient| (log-time),linear_regression
+algorithm_merge_sort,0.7540510038724879,|standardized coefficient| (log-time),linear_regression
+execution_mode_serial,0.27059526997400046,|standardized coefficient| (log-time),linear_regression
+algorithm_parallel_merge_sort,0.2705952699739326,|standardized coefficient| (log-time),linear_regression
+execution_mode_parallel,0.2705952699738341,|standardized coefficient| (log-time),linear_regression
+workers,0.10629913194262519,|standardized coefficient| (log-time),linear_regression
+input_size,0.04196502468507554,|standardized coefficient| (log-time),linear_regression
+logical_cores,3.26405569239796e-14,|standardized coefficient| (log-time),linear_regression
+ram_total_gb,6.6058269965196814e-15,|standardized coefficient| (log-time),linear_regression
+physical_cores,2.6367796834847468e-15,|standardized coefficient| (log-time),linear_regression
+log2_work_per_worker,0.6780078101849161,impurity importance,decision_tree
+algorithm_timsort,0.31010310355511006,impurity importance,decision_tree
+log2_input_size,0.004879818002473181,impurity importance,decision_tree
+log2_workers,0.0021543440720553386,impurity importance,decision_tree
+input_size,0.0015449979618290112,impurity importance,decision_tree
+algorithm_merge_sort,0.0012166044808242327,impurity importance,decision_tree
+workers,0.0010340098883750946,impurity importance,decision_tree
+algorithm_quick_sort,0.0007688787225095434,impurity importance,decision_tree
+execution_mode_parallel,0.0001579119888757675,impurity importance,decision_tree
+algorithm_parallel_merge_sort,0.00010183502979954906,impurity importance,decision_tree
+execution_mode_serial,3.068611323198836e-05,impurity importance,decision_tree
+ram_total_gb,0.0,impurity importance,decision_tree
+physical_cores,0.0,impurity importance,decision_tree
+logical_cores,0.0,impurity importance,decision_tree
+log2_work_per_worker,0.6456645292216737,impurity importance,random_forest
+algorithm_timsort,0.2584299376125165,impurity importance,random_forest
+log2_input_size,0.05115310696699745,impurity importance,random_forest
+input_size,0.03986002853625087,impurity importance,random_forest
+workers,0.0013095267077538463,impurity importance,random_forest
+log2_workers,0.0011952077756193094,impurity importance,random_forest
+algorithm_quick_sort,0.0010712651166955194,impurity importance,random_forest
+algorithm_merge_sort,0.0006912392027548245,impurity importance,random_forest
+algorithm_parallel_merge_sort,0.0002902617202745782,impurity importance,random_forest
+execution_mode_serial,0.00022096836793651133,impurity importance,random_forest
+execution_mode_parallel,0.00011392877152695163,impurity importance,random_forest
+ram_total_gb,0.0,impurity importance,random_forest
+physical_cores,0.0,impurity importance,random_forest
+logical_cores,0.0,impurity importance,random_forest

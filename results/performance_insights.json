@@ -1,0 +1,129 @@
+{
+  "findings": [
+    "Input size: empirical time growth exponent (log-log slope; 1.0=linear, n log n appears as ~1.05-1.15): merge_sort (w=1): 1.103, parallel_merge_sort (w=1): 1.083, parallel_merge_sort (w=2): 1.088, parallel_merge_sort (w=4): 1.014, parallel_merge_sort (w=8): 1.003, quick_sort (w=1): 1.106, timsort (w=1): 1.17.",
+    "Worker count at n=500,000: speedup vs serial merge sort 1w=0.95x (eff 95%), 2w=1.63x (eff 81%), 4w=2.61x (eff 65%), 8w=4.03x (eff 50%).",
+    "Best worker count per input size: n=10,000: 8, n=25,000: 8, n=50,000: 8, n=75,000: 8, n=100,000: 8, n=150,000: 8, n=250,000: 8, n=350,000: 8, n=500,000: 8.",
+    "Saturation (going to more workers gave <1.25x extra gain): n=10,000: 2->4 workers gain 1.179x.",
+    "Process-pool startup overhead (measured separately, excluded from exec time): 1w=220.4 ms, 2w=230.8 ms, 4w=278.9 ms, 8w=351.1 ms.",
+    "Overheads at n=500,000: IPC/pickling ~5.2% and final k-way merge in the parent ~15.2% of parallel execution time on average across worker counts; the merge is serial and grows with worker count, limiting scalability (Amdahl's law).",
+    "Load balance (max/mean worker sort time, 1.00=perfect): 1w=1.000, 2w=1.014, 4w=1.095, 8w=1.082. Chunks differ by at most one element, so imbalance comes from OS scheduling/SMT sharing rather than uneven work.",
+    "Serial merge sort beats a one-off parallel sort (including pool startup) at n = 10,000, 25,000, 50,000, 75,000, 100,000.",
+    "Parallel merge sort with 1 worker is slower than serial merge sort by 7.5% on average: pure overhead of pickling data to/from a worker process.",
+    "Built-in Timsort (C implementation, serial) beats the best pure-Python parallel merge sort at 9/9 input sizes: implementation efficiency outweighs multicore parallelism here."
+  ],
+  "details": {
+    "growth_exponents": {
+      "merge_sort (w=1)": 1.103,
+      "parallel_merge_sort (w=1)": 1.083,
+      "parallel_merge_sort (w=2)": 1.088,
+      "parallel_merge_sort (w=4)": 1.014,
+      "parallel_merge_sort (w=8)": 1.003,
+      "quick_sort (w=1)": 1.106,
+      "timsort (w=1)": 1.17
+    },
+    "speedup_at_largest": {
+      "1": 0.953,
+      "2": 1.628,
+      "4": 2.608,
+      "8": 4.025
+    },
+    "best_workers_per_size": {
+      "10000": 8,
+      "25000": 8,
+      "50000": 8,
+      "75000": 8,
+      "100000": 8,
+      "150000": 8,
+      "250000": 8,
+      "350000": 8,
+      "500000": 8
+    },
+    "saturation_points": [
+      [
+        10000,
+        2,
+        4,
+        1.179
+      ]
+    ],
+    "startup_by_workers": {
+      "1": 0.2204,
+      "2": 0.2308,
+      "4": 0.2789,
+      "8": 0.3511
+    },
+    "comm_fraction_largest": 0.0523,
+    "merge_fraction_largest": 0.1518,
+    "load_imbalance_by_workers": {
+      "1": 1.0,
+      "2": 1.0136,
+      "4": 1.0949,
+      "8": 1.0824
+    },
+    "serial_vs_parallel": [
+      {
+        "input_size": 10000,
+        "best_parallel_s": 0.010123400017619133,
+        "merge_sort_beats_parallel_exec": false,
+        "merge_sort_beats_parallel_end_to_end": true,
+        "timsort_beats_parallel": true
+      },
+      {
+        "input_size": 25000,
+        "best_parallel_s": 0.023528699995949864,
+        "merge_sort_beats_parallel_exec": false,
+        "merge_sort_beats_parallel_end_to_end": true,
+        "timsort_beats_parallel": true
+      },
+      {
+        "input_size": 50000,
+        "best_parallel_s": 0.050251000036951154,
+        "merge_sort_beats_parallel_exec": false,
+        "merge_sort_beats_parallel_end_to_end": true,
+        "timsort_beats_parallel": true
+      },
+      {
+        "input_size": 75000,
+        "best_parallel_s": 0.07063699996797368,
+        "merge_sort_beats_parallel_exec": false,
+        "merge_sort_beats_parallel_end_to_end": true,
+        "timsort_beats_parallel": true
+      },
+      {
+        "input_size": 100000,
+        "best_parallel_s": 0.09897250001085922,
+        "merge_sort_beats_parallel_exec": false,
+        "merge_sort_beats_parallel_end_to_end": true,
+        "timsort_beats_parallel": true
+      },
+      {
+        "input_size": 150000,
+        "best_parallel_s": 0.15118970000185072,
+        "merge_sort_beats_parallel_exec": false,
+        "merge_sort_beats_parallel_end_to_end": false,
+        "timsort_beats_parallel": true
+      },
+      {
+        "input_size": 250000,
+        "best_parallel_s": 0.24356680002529174,
+        "merge_sort_beats_parallel_exec": false,
+        "merge_sort_beats_parallel_end_to_end": false,
+        "timsort_beats_parallel": true
+      },
+      {
+        "input_size": 350000,
+        "best_parallel_s": 0.3472089999704622,
+        "merge_sort_beats_parallel_exec": false,
+        "merge_sort_beats_parallel_end_to_end": false,
+        "timsort_beats_parallel": true
+      },
+      {
+        "input_size": 500000,
+        "best_parallel_s": 0.5018085999763571,
+        "merge_sort_beats_parallel_exec": false,
+        "merge_sort_beats_parallel_end_to_end": false,
+        "timsort_beats_parallel": true
+      }
+    ]
+  }
+}
